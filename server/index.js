@@ -49,6 +49,13 @@ async function run() {
         res.send(result)
 
     })
+    // Get a single data
+    app.get('/games/:id', async(req, res) =>{
+        const id = req.params.id;
+        const query = {_id: new ObjectId(id)}
+        const game = await gamesCollection.findOne(query)
+        res.send(game)
+    })
     // Get the all data
     app.get('/games', async(req, res) =>{
         const games = gamesCollection.find()
