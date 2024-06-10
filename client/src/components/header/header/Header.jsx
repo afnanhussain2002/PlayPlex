@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../logo/Logo";
+import HeaderBtn from "../../buttons/headerBtn/HeaderBtn";
 
 const Header = () => {
   const menu = (
@@ -83,7 +84,7 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{menu}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <HeaderBtn/>
       </div>
     </div>
   );

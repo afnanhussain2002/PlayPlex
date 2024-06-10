@@ -1,3 +1,5 @@
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,6 +10,9 @@ export default {
     extend: {
       colors:{
         'main-color':'#45F882'
+      },
+      backgroundImage:{
+        'custom-background': "url[('./src/assets/headerBtnBg.svg')]"
       }
     },
     daisyui: {
