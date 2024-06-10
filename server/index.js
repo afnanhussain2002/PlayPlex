@@ -8,7 +8,7 @@ app.use(cors())
 app.use(express.json())
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.vwpy9jc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -32,6 +32,22 @@ async function run() {
         const game = req.body;
         const result = await gamesCollection.insertOne(game)
         res.send(result)
+    })
+    // update the data
+    app.put('/games/:id', async(req, res) =>{
+        const id = req.params.id;
+        const game = req.body
+        const filter = {_id: new ObjectId(id)}
+        const options = {upsert: true}
+        const updateGame ={
+            $set:{
+                name:game.name
+            }
+        }
+
+        const result = await gamesCollection.updateOne(filter,updateGame,options)
+        res.send(result)
+
     })
     // Get the all data
     app.get('/games', async(req, res) =>{
