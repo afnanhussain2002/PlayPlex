@@ -33,7 +33,7 @@ async function run() {
         const result = await gamesCollection.insertOne(game)
         res.send(result)
     })
-    // update the data
+    // update a single data
     app.put('/games/:id', async(req, res) =>{
         const id = req.params.id;
         const game = req.body
@@ -48,6 +48,13 @@ async function run() {
         const result = await gamesCollection.updateOne(filter,updateGame,options)
         res.send(result)
 
+    })
+    // Delete a single data
+    app.delete('/games/:id', async(req, res) =>{
+        const id = req.params.id;
+        const query = {_id: new ObjectId(id)}
+        const result = await gamesCollection.deleteOne(query)
+        res.send(result)
     })
     // Get a single data
     app.get('/games/:id', async(req, res) =>{
