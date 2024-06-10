@@ -27,10 +27,16 @@ async function run() {
     const database = client.db("playPlexDB")
     const gamesCollection = database.collection("games")
 
-    // create operation using post 
+    // create data using post 
     app.post('/games', async(req, res) =>{
         const game = req.body;
         const result = await gamesCollection.insertOne(game)
+        res.send(result)
+    })
+    // Get the all data
+    app.get('/games', async(req, res) =>{
+        const games = gamesCollection.find()
+        const result = await games.toArray()
         res.send(result)
     })
     // Send a ping to confirm a successful connection
