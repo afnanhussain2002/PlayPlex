@@ -3,7 +3,7 @@ import HeaderBtn from "../buttons/headerBtn/HeaderBtn";
 
 const HomeHeroSection = () => {
     return (
-        <section className="bg-[url('https://themedox.com/mykd/wp-content/uploads/2023/10/slider_bg.jpg')] bg-cover bg-center flex flex-col justify-center gap-10 items-center py-10 lg:flex-row lg:gap-32">
+        <section className="bg-[url('https://themedox.com/mykd/wp-content/uploads/2023/10/slider_bg.jpg')] bg-cover bg-center border-b-8 border-main-color min-h-[600px] flex flex-col justify-center gap-10 items-center py-10 lg:flex-row lg:gap-32 lg:min-h-[800px]">
             <div className="mt-16 lg:mt-0">
                 <h3 className="text-main-color font-bold text-xl bg-main-color p-1 bg-opacity-40 w-40 rounded-lg">Game On! </h3>
                 <h5 className="text-5xl text-white font-bold shadow-3xl lg:text-8xl">PlayPlex -</h5>
