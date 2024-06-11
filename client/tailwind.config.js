@@ -9,7 +9,9 @@ export default {
   theme: {
     extend: {
       colors:{
-        'main-color':'#45F882'
+        'main-color':'#45F882',
+        'sec-color': '#131A23',
+        'three-color':'#FFCC67'
       },
       backgroundImage:{
         'custom-background': "url[('./src/assets/headerBtnBg.svg')]"
