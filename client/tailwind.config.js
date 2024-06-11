@@ -13,6 +13,9 @@ export default {
       },
       backgroundImage:{
         'custom-background': "url[('./src/assets/headerBtnBg.svg')]"
+      },
+      boxShadow: {
+        '3xl': '-1px 5px 0px rgba(69, 248, 130, 0.66)',
       }
     },
     daisyui: {

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../logo/Logo";
 import HeaderBtn from "../../buttons/headerBtn/HeaderBtn";
+import { FaRegEdit } from "react-icons/fa";
 
 const Header = () => {
   const menu = (
@@ -52,7 +53,8 @@ const Header = () => {
     </>
   );
   return (
-    <div className="navbar">
+    <div className="flex justify-center">
+    <div className="navbar absolute z-40 max-w-7xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -84,8 +86,10 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{menu}</ul>
       </div>
       <div className="navbar-end">
-        <HeaderBtn/>
+        <HeaderBtn link={'/about'} text={'-Sign In'} icon={<FaRegEdit/>}/>
       </div>
+    </div>
+
     </div>
   );
 };
