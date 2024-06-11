@@ -1,5 +1,4 @@
-import HeaderBtn from "../buttons/headerBtn/HeaderBtn";
-import YellowButton from "../buttons/yellowButton/YellowButton";
+
 
 
 const SingleProduct = ({product}) => {
@@ -22,7 +21,7 @@ const SingleProduct = ({product}) => {
               <div className="flex items-center gap-5 justify-around border p-2 rounded border-main-color">
                 <p className="font-bold">${price}</p>
                 <div>
-                  <button className="btn btn-sm bg-main-color text-black">Buy Now</button>
+                  <button className=" btn-sm bg-main-color text-black rounded">Buy Now</button>
                 </div>
               </div>
             </div>
