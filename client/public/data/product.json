@@ -1,0 +1,62 @@
+[
+    {
+      "id": 1,
+      "product_img": "https://www.space.com/best-space-exploration-games",
+      "price": 39.99,
+      "creator_name": "Cosmo Studios",
+      "creator_img": "https://www.instagram.com/cosmosalonstudios/?hl=en",
+      "product_name": "Galactic Odyssey",
+      "short_description": "Explore the vast universe, discover alien civilizations, and unravel the mysteries of space in this epic space exploration adventure.",
+      "release_date": "2023-12-01",
+      "genres": ["Adventure", "Simulation", "Strategy"],
+      "discount": 10  
+    },
+    {
+      "id": 2,
+      "product_img": "https://www.shutterstock.com/search/puzzle-game",
+      "price": 19.99,
+      "creator_name": "ThinkTac Games",
+      "creator_img": "https://www.thinktac.com/",
+      "product_name": "Enigma Spheres",
+      "short_description": "Test your wit and challenge your brain with this mind-bending puzzle game. Solve intricate challenges and unravel the secrets of the ancient spheres.",
+      "release_date": "2024-02-14",
+      "genres": ["Puzzle"],
+      "discount": null 
+    },
+    {
+      "id": 3,
+      "product_img": "https://www.freepik.com/free-photos-vectors/rpg-game",
+      "price": 59.99,
+      "creator_name": "Mythic Forge",
+      "creator_img": "https://www.facebook.com/pubgmobilephil.official/videos/mythic-forge/680789930322312/",
+      "product_name": "Chronicles of Aethel",
+      "short_description": "Forge your destiny in a world of magic and wonder. Choose your path, build your character, and embark on an epic RPG adventure in the realm of Aethel.",
+      "release_date": "2022-06-20",
+      "genres": ["RPG", "Fantasy", "Open World"],
+      "discount": 20  
+    },
+    {
+      "id": 4,
+      "product_img": "https://www.shutterstock.com/search/adventure-game",
+      "price": 24.99,
+      "creator_name": "Daredevil Developers",
+      "creator_img": "https://www.pinterest.com/ideas/daredevil-logo/957957889183/",
+      "product_name": "Temple of the Sun God",
+      "short_description": "Uncover the secrets of a lost civilization and escape from a perilous temple in this thrilling action-adventure game. Prepare for traps, puzzles, and danger!",
+      "release_date": "2024-04-12",
+      "genres": ["Adventure", "Action"],
+      "discount": null 
+    },
+    {
+      "id": 5,
+      "product_img": "https://www.unsplash.com/s/photos/sports-games",
+      "price": 44.99,
+      "creator_name": "Challenge Sports",
+      "creator_img": "https://www.shutterstock.com/search/challenge-logo",
+      "product_name": "Super League Soccer",
+      "short_description": "Take to the pitch and dominate the competition in this fast-paced and exciting soccer game. Build your dream team, hone your skills, and become the champion!",
+      "release_date": "2024-03-07",
+      "genres": ["Sports", "Simulation"],
+      "discount": 5  
+    }
+]
