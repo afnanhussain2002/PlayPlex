@@ -1,6 +1,6 @@
 const ActiveTeam = () => {
   return (
-    <div className="mt-8 bg-[url('https://themedox.com/mykd/wp-content/uploads/2023/10/team_bg.jpg')] bg-center bg bg-cover py-5">
+    <div className=" bg-[url('https://themedox.com/mykd/wp-content/uploads/2023/10/team_bg.jpg')] bg-center bg bg-cover py-20">
       <div className="text-center">
         <p className="font-bold text-main-color">Our Team Members</p>
         <h3 className="font-semibold text-5xl text-white">Active Team Members</h3>
