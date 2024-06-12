@@ -1,4 +1,5 @@
 import Logo from'../../components/header/logo/Logo'
+import FooterBottom from './FooterBottom';
 const Footer = () => {
   return (
     <div className=' bg-base-200'>
@@ -33,6 +34,7 @@ const Footer = () => {
         </nav>
        
       </footer>
+      <FooterBottom/>
     </div>
   );
 };

@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 
 
 
 const SingleProduct = ({product}) => {
     
-    const { creator_img, creator_name, price, product_img, product_name } = product
+    const { id, creator_img, creator_name, price, product_img, product_name } = product
     return (
         <>
            <div className="bg-sec-color border border-main-color flex flex-col justify-center gap-5 items-center rounded-lg py-5 
@@ -21,7 +22,7 @@ const SingleProduct = ({product}) => {
               <div className="flex items-center gap-5 justify-around border p-2 rounded border-main-color">
                 <p className="font-bold">${price}</p>
                 <div>
-                  <button className=" btn-sm bg-main-color text-black rounded">Buy Now</button>
+                 <Link to={`/product/${id}`}><button className=" btn-sm bg-main-color text-black rounded">Buy Now</button></Link> 
                 </div>
               </div>
             </div>

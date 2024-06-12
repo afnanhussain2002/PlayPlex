@@ -9,7 +9,7 @@ const ActiveTeam = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 max-w-7xl mx-auto gap-6">
       {/* card 1 */}
       <div className="space-y-5 bg-sec-color py-14 mx-auto px-10 relative rounded-lg">
-        <hr className="bg-main-color h-4 shadow-lg shadow-green-500/50"/>
+        <hr className="bg-main-color h-4 shadow-lg shadow-green-500/50 rounded-lg" />
         <img className="border-2 rounded-full" src="https://themedox.com/mykd/wp-content/uploads/2023/10/team01.png" alt="" />
         <div className="text-center">
             <h3 className="text-2xl text-white font-bold">Ata Ullah</h3>
@@ -18,7 +18,7 @@ const ActiveTeam = () => {
       </div>
       {/* card 2 */}
       <div className="space-y-5 bg-sec-color py-14 mx-auto px-10 relative rounded-lg">
-        <hr className="bg-main-color h-4 shadow-lg shadow-green-500/50"/>
+        <hr className="bg-main-color h-4 shadow-lg shadow-green-500/50 rounded-lg"/>
         <img className="border-2 rounded-full" src="https://themedox.com/mykd/wp-content/uploads/2023/10/team02.png" alt="" />
         <div className="text-center">
             <h3 className="text-2xl text-white font-bold">Harsal Patel</h3>
@@ -27,7 +27,7 @@ const ActiveTeam = () => {
       </div>
       {/* card 1 */}
       <div className="space-y-5 bg-sec-color py-14 mx-auto px-10 relative rounded-lg">
-        <hr className="bg-main-color h-4 shadow-lg shadow-green-500/50"/>
+        <hr className="bg-main-color h-4 shadow-lg shadow-green-500/50 rounded-lg"/>
         <img className="border-2 rounded-full" src="https://themedox.com/mykd/wp-content/uploads/2023/10/team03.png" alt="" />
         <div className="text-center">
             <h3 className="text-2xl text-white font-bold">Usain Boult</h3>
@@ -35,9 +35,9 @@ const ActiveTeam = () => {
         </div>
       </div>
       {/* card 1 */}
-      <div className="space-y-5 bg-sec-color py-14 mx-auto px-10 relative rounded-lg">
-        <hr className="bg-main-color h-4 shadow-lg shadow-green-500/50"/>
-        <img className="border-2 rounded-full" src="https://themedox.com/mykd/wp-content/uploads/2023/10/team04.png" alt="" />
+      <div className="space-y-5 bg-sec-color py-14 mx-auto px-10 relative rounded-lg rounded-lg">
+        <hr className="bg-main-color h-4 shadow-lg shadow-green-500/50 rounded-lg"/>
+        <img className="border-2 rounded-full " src="https://themedox.com/mykd/wp-content/uploads/2023/10/team04.png" alt="" />
         <div className="text-center">
             <h3 className="text-2xl text-white font-bold">Md Aziz</h3>
             <p className="text-main-color font-bold">Design Expert</p>

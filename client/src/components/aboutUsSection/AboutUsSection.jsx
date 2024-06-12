@@ -2,7 +2,7 @@ import ImageSlider from "../imageSlider/ImageSlider";
 
 const AboutUsSection = () => {
   return (
-    <div className="mt-8 bg-[url('https://themedox.com/mykd/wp-content/uploads/2023/10/area_bg01.jpg')] bg-center bg bg-cover py-5">
+    <div className="mt-8 bg-[url('https://themedox.com/mykd/wp-content/uploads/2023/10/area_bg01.jpg')] bg-center bg bg-cover py-20">
       <div>
         <div className="text-center">
         <p className="font-bold text-main-color">Know About Us</p>
