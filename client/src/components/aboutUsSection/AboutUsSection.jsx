@@ -22,6 +22,14 @@ const AboutUsSection = () => {
           <img src="https://themedox.com/mykd/wp-content/uploads/2023/10/about_tab06.png" alt="" />
         </div>
         <hr className="bg-main-color w-96 my-4 mx-auto h-1"/>
+        <div className="flex justify-center gap-14 max-w-7xl mx-auto">
+          <img width={300} src="https://themedox.com/mykd/wp-content/uploads/2023/10/about_img01.jpg" alt="" />
+          <div className="w-96">
+            <h3 className="font-bold text-3xl text-white">Human Game</h3>
+            <p className="font-bold text-main-color mt-1">Rate 50%</p>
+            <p className=" mt-2">Lorem ipsum dolor sit amet, consteur adipiscing Duis elementum sollicitudin is yaugue euismods Nulla ullamcorper. Morbi pharetra tellus miolslis, tincidunt massa venenatis.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
