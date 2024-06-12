@@ -6,8 +6,8 @@ const SingleProduct = ({product}) => {
     const { creator_img, creator_name, price, product_img, product_name } = product
     return (
         <>
-           <div className="bg-sec-color border border-main-color flex justify-center gap-5 items-center rounded-lg py-5 
-            shadow-lg shadow-green-500/50  ">
+           <div className="bg-sec-color border border-main-color flex flex-col justify-center gap-5 items-center rounded-lg py-5 
+            shadow-lg shadow-green-500/50 lg:flex-row">
             <div>
               <img className="w-28 h-20 rounded-lg" src={product_img} alt={product_name} />
             </div>
