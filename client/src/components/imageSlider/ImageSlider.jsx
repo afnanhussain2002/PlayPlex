@@ -4,9 +4,11 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import 'swiper/modules'
 
 
 const ImageSlider = () => {
+   
   return (
     <div className="mt-10">
       <Swiper
@@ -23,7 +25,8 @@ const ImageSlider = () => {
                 rotate:0,
                 stretch:0,
                 depth:100,
-                modifier:2.5
+                modifier:2.5,
+                
             }
         }
     
