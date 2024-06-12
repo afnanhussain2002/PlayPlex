@@ -86,7 +86,7 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{menu}</ul>
       </div>
       <div className="navbar-end">
-        <HeaderBtn link={'/about'} text={'-Sign In'} icon={<FaRegEdit/>}/>
+        <HeaderBtn link={'/register'} text={'-Sign In'} icon={<FaRegEdit/>}/>
       </div>
     </div>
 
