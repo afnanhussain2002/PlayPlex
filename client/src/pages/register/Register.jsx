@@ -1,14 +1,36 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Register = () => {
+  const {createUser} = useContext(AuthContext)
+
+  const handleRegister = e =>{
+    e.preventDefault()
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    const user ={name, photo, email, password}
+
+    createUser(email,password)
+    .then(res =>{
+      console.log(res.user);
+    }) 
+    .catch(error => {
+      console.log(error);
+    })
+  }
     return (
         <div>
               <div className="container flex flex-col mx-auto rounded-lg pt-12 my-5">
            <div className="flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable">
       <div className="flex items-center justify-center w-full lg:p-12">
         <div className="flex items-center xl:p-10">
-          <form className="flex flex-col w-full h-full p-6 text-center rounded-3xl border-4 border-main-color shadow-lg shadow-green-500/100">
+          <form onSubmit={handleRegister} className="flex flex-col w-full h-full p-6 text-center rounded-3xl border-4 border-main-color shadow-lg shadow-green-500/100">
             <h3 className="mb-3 text-4xl font-extrabold text-white">Sign In</h3>
             <p className="mb-4 text-main-color">Enter your email and password</p>
             <a className="flex items-center border-4 border-main-color shadow-lg shadow-green-500/50 justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300">
