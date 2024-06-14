@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import Logo from "../../components/header/logo/Logo";
 
 const Register = () => {
   const { createUser, user } = useContext(AuthContext);
@@ -56,6 +57,10 @@ const Register = () => {
                 onSubmit={handleRegister}
                 className="flex flex-col w-full h-full p-6 text-center rounded-3xl border-4 border-main-color shadow-lg shadow-green-500/100"
               >
+                <div className="mx-auto mb-2">
+                <Logo/>
+
+                </div>
                 <h3 className="mb-3 text-4xl font-extrabold text-white">
                   Register
                 </h3>
