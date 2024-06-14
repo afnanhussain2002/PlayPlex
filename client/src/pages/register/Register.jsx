@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Register = () => {
   const {createUser} = useContext(AuthContext)
+  const [regError, setRegError] = useState('')
+  const [success, setSuccess ] = useState('')
 
   const handleRegister = e =>{
     e.preventDefault()
@@ -16,12 +18,16 @@ const Register = () => {
 
     const user ={name, photo, email, password}
 
+    setRegError('')
+    setSuccess('')
+
     createUser(email,password)
     .then(res =>{
       console.log(res.user);
+      setSuccess('User Created Successfully')
     }) 
     .catch(error => {
-      console.log(error);
+      setRegError(error.message);
     })
   }
     return (
@@ -66,19 +72,18 @@ const Register = () => {
               <a href="javascript:void(0)" className="mr-4 text-sm font-medium text-purple-blue-500">Forget password?</a>
             </div>
             <button className="w-full px-6 py-5 mb-5 text-sm font-bold bg-main-color rounded-lg text-black shadow-lg shadow-green-500/50">Register</button>
-            <p className="text-sm leading-relaxed text-grey-900">Already have an Account? <Link to={'/login'} className="font-bold text-grey-700">Create an Account</Link></p>
+            {
+              regError ? <p className="text-red-600">{regError}</p>
+              :
+              <p className="text-green-600">{success}</p>
+            }
+            <p className="text-sm leading-relaxed text-grey-900">Already have an Account? <Link to={'/login'} className="font-bold text-grey-700">Login your Account</Link></p>
           </form>
         </div>
       </div>
     </div>
         </div>
-        <div className="flex flex-wrap -mx-3 my-5">
-            <div className="w-full max-w-full sm:w-3/4 mx-auto text-center">
-                <p className="text-sm text-slate-500 py-1">
-                    Tailwind CSS Component from <a href="https://www.loopple.com/theme/motion-landing-library?ref=tailwindcomponents" className="text-slate-700 hover:text-slate-900" target="_blank">Motion Landing Library</a> by <a href="https://www.loopple.com" className="text-slate-700 hover:text-slate-900" target="_blank">Loopple Builder</a>.
-                </p>
-            </div>
-        </div>
+       
         </div>
     );
 };
