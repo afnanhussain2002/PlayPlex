@@ -122,12 +122,7 @@ const Register = () => {
                       />
                     </label>
                   </div>
-                  <a
-                    href="javascript:void(0)"
-                    className="mr-4 text-sm font-medium text-purple-blue-500"
-                  >
-                    Forget password?
-                  </a>
+                
                 </div>
                 <button className="w-full px-6 py-5 mb-5 text-sm font-bold bg-main-color rounded-lg text-black shadow-lg shadow-green-500/50">
                   Register
