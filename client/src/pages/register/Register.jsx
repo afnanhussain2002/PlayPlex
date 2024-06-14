@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
@@ -20,6 +21,10 @@ const Register = () => {
 
     setRegError('')
     setSuccess('')
+
+    if(password.length < 8){
+     return setRegError('Password should 8 character or more')
+    }
 
     createUser(email,password)
     .then(res =>{
