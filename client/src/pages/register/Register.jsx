@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-
-
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const {createUser} = useContext(AuthContext)
+  const {createUser, user} = useContext(AuthContext)
   const [regError, setRegError] = useState('')
   const [success, setSuccess ] = useState('')
 
@@ -16,8 +15,10 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+    const terms = form.terms.checked
 
-    const user ={name, photo, email, password}
+    const userDetails ={name, photo, email, password,terms}
+    console.log(userDetails);
 
     setRegError('')
     setSuccess('')
@@ -30,6 +31,15 @@ const Register = () => {
     .then(res =>{
       console.log(res.user);
       setSuccess('User Created Successfully')
+      updateProfile(user, {
+        displayName:name, photoURL:photo
+      })
+      .then(() =>{
+        console.log('profile updated');
+      })
+      .catch(error =>{
+        setRegError(error.message)
+      })
     }) 
     .catch(error => {
       setRegError(error.message);
@@ -55,24 +65,24 @@ const Register = () => {
            </div>
           <div className="flex gap-3">
            
-            <input id="name" type="text" name="name" placeholder="Your Name" className="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl"/>
+            <input id="name" type="text" name="name" placeholder="Your Name" className="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" required/>
 
-            <input id="name" type="text" name="photo" placeholder="Photo" className="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl"/>
+            <input id="name" type="text" name="photo" placeholder="Photo" className="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" required/>
 
           </div>
  
-            <input id="email" type="email" name="email" placeholder="mail@loopple.com" className="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl"/>
+            <input id="email" type="email" name="email" placeholder="mail@loopple.com" className="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" required/>
 
           
-            <input id="password" type="password" name="password" placeholder="Enter a password" className="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-grey-400 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl"/>
+            <input id="password" type="password" name="password" placeholder="Enter a password" className="flex items-center w-full px-5 py-4 mb-5 mr-2 text-sm font-medium outline-none focus:bg-grey-400 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl" required/>
             <div className="flex flex-row justify-between mb-8">
               <label className="relative inline-flex items-center mr-3 cursor-pointer select-none">
-                <input type="checkbox" checked value="" className="sr-only peer"/>
+                <input type="checkbox" name="terms" className="sr-only peer"/>
                 <div
                   className="w-5 h-5 bg-white border-2 rounded-sm border-grey-500 peer peer-checked:border-0 peer-checked:bg-purple-blue-500">
                   <img className="" src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/icons/check.png" alt="tick"/>
                 </div>
-                <span className="ml-3 text-sm font-normal text-grey-900">Keep me logged in</span>
+                <span className="ml-3 text-sm font-normal text-grey-900">Accept Our Terms and Conditions</span>
               </label>
               <a href="javascript:void(0)" className="mr-4 text-sm font-medium text-purple-blue-500">Forget password?</a>
             </div>
