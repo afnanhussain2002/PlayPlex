@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Logo from "../../components/header/logo/Logo";
+import SocialLogin from "../../components/socialLogin/SocialLogin";
 
 const Register = () => {
   const { createUser, user } = useContext(AuthContext);
@@ -53,8 +54,8 @@ const Register = () => {
         <div className="flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable">
           <div className="flex items-center justify-center w-full lg:p-12">
             <div className="flex items-center xl:p-10">
-              <form
-                onSubmit={handleRegister}
+              <div
+                
                 className="flex flex-col w-full h-full p-6 text-center rounded-3xl border-4 border-main-color shadow-lg shadow-green-500/100"
               >
                 <div className="mx-auto mb-2">
@@ -65,19 +66,13 @@ const Register = () => {
                   Register
                 </h3>
 
-                <button className="flex items-center border-4 border-main-color shadow-lg shadow-green-500/50 justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300">
-                  <img
-                    className="h-5 mr-2"
-                    src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
-                    alt=""
-                  />
-                  Sign in with Google
-                </button>
+                <SocialLogin/>
                 <div className="flex items-center mb-3">
                   <hr className="h-0 border-b border-solid border-grey-500 grow" />
                   <p className="mx-4 text-grey-600">or</p>
                   <hr className="h-0 border-b border-solid border-grey-500 grow" />
                 </div>
+                <form onSubmit={handleRegister}>
                 <div className="flex gap-3">
                   <input
                     id="name"
@@ -143,7 +138,9 @@ const Register = () => {
                     Login your Account
                   </Link>
                 </p>
-              </form>
+                </form>
+              
+              </div>
             </div>
           </div>
         </div>
