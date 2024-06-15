@@ -17,7 +17,7 @@ const Header = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-main-color "
+              ? "text-main-color overline"
               : ""
           }
         >

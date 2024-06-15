@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Logo from "../../components/header/logo/Logo";
+import SocialLogin from "../../components/socialLogin/SocialLogin";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
@@ -40,14 +41,7 @@ const Login = () => {
                 <h3 className="mb-3 text-4xl font-extrabold text-white">
                   Log In
                 </h3>
-                <button className="flex items-center border-4 border-main-color shadow-lg shadow-green-500/50 justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300">
-                  <img
-                    className="h-5 mr-2"
-                    src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
-                    alt=""
-                  />
-                  Sign in with Google
-                </button>
+               <SocialLogin/>
                 <div className="flex items-center mb-3">
                   <hr className="h-0 border-b border-solid border-grey-500 grow" />
                   <p className="mx-4 text-grey-600">or</p>
