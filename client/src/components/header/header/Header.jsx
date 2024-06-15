@@ -28,7 +28,7 @@ const Header = () => {
         <NavLink
           to="/about"
           className={({ isActive, isPending }) =>
-            isPending ? "" : isActive ? "text-main-color line-through " : ""
+            isPending ? "" : isActive ? "text-main-color overline" : ""
           }
         >
           About
@@ -38,7 +38,7 @@ const Header = () => {
         <NavLink
           to="/about"
           className={({ isActive, isPending }) =>
-            isPending ? "" : isActive ? "text-main-color line-through " : ""
+            isPending ? "" : isActive ? "text-main-color overline" : ""
           }
         >
           Blog
@@ -48,10 +48,20 @@ const Header = () => {
         <NavLink
           to="/about"
           className={({ isActive, isPending }) =>
-            isPending ? "" : isActive ? "text-main-color line-through " : ""
+            isPending ? "" : isActive ? "text-main-color overline" : ""
           }
         >
           Contact
+        </NavLink>
+      </li>
+      <li className="font-bold">
+        <NavLink
+          to="/addProduct"
+          className={({ isActive, isPending }) =>
+            isPending ? "" : isActive ? "text-main-color overline" : ""
+          }
+        >
+          Add Product
         </NavLink>
       </li>
     </>
