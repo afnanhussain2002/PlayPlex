@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Logo from "../../components/header/logo/Logo";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
@@ -9,6 +9,9 @@ const Login = () => {
   const [logError, setLogError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || "/";
+  // Login user
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -21,7 +24,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         setSuccess("User Logged In Successfully");
-        navigate('/')
+        navigate(from, {replace: true})
       })
       .catch((error) => {
         console.log(error);
