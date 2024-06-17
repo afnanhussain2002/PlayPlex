@@ -1,4 +1,17 @@
 const AddProduct = () => {
+
+    const handleAddProduct = e =>{
+        e.preventDefault()
+        const form = e.target ;
+        const productName = form.productName.value;
+        const productPrice = form.productPrice.value;
+        const category = form.category.value;
+        const productPhoto = form.productPhoto.value;
+        const description = form.description.value;
+
+        const product ={productName,productPhoto,productPrice,category, description}
+        console.log(product);
+    }
   return (
     <div>
         {/* Banner part */}
@@ -14,20 +27,20 @@ const AddProduct = () => {
 
       <div className="max-w-4xl p-6 mx-auto rounded-md shadow-lg shadow-green-500/50 border-4 border-main-color mt-20 mb-20">
     <h1 className="text-xl font-bold text-white capitalize dark:text-white">Add Product</h1>
-    <form>
+    <form onSubmit={handleAddProduct}>
         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
-                <label className="text-white dark:text-gray-200" for="username">Product Name</label>
+                <label className="text-white dark:text-gray-200" >Product Name</label>
                 <input id="productName" type="text" name="productName" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
             <div>
-                <label className="text-white dark:text-gray-200" for="username">Product Price</label>
+                <label className="text-white dark:text-gray-200" >Product Price</label>
                 <input id="productPrice" type="number" name="productPrice" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
 
             <div>
-                <label className="text-white dark:text-gray-200" for="passwordConfirmation">Select Category</label>
-                <select className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <label className="text-white dark:text-gray-200">Select Category</label>
+                <select name="category" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                     <option>Surabaya</option>
                     <option>Jakarta</option>
                     <option>Tangerang</option>
@@ -36,12 +49,12 @@ const AddProduct = () => {
             </div>
           
               <div>
-                <label className="text-white dark:text-gray-200" for="username">Product Photo Url</label>
-                <input id="productName" type="text" name="productName" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+                <label className="text-white dark:text-gray-200" >Product Photo Url</label>
+                <input id="productPhoto" type="text" name="productPhoto" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
             <div>
-                <label className="text-white dark:text-gray-200" for="passwordConfirmation">Product Description</label>
-                <textarea id="textarea" type="textarea" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                <label className="text-white dark:text-gray-200" >Product Description</label>
+                <textarea id="textarea" type="textarea" name="description" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
             </div>
             <div>
 
