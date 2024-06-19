@@ -11,12 +11,16 @@ const AddProduct = () => {
         const productPrice = form.productPrice.value;
         const category = form.category.value;
         const productPhoto = form.productPhoto.value;
+        const productPhoto2 = form.productPhoto2.value;
+        const productPhoto3 = form.productPhoto3.value;
+        const productPhoto4 = form.productPhoto4.value;
         const productShortDes = form.productShortDes.value;
+        const gameTrailer = form.gameTrailer.value;
         const description = form.description.value;
         const uploaderName = user.displayName;
         const uploaderPhoto = user.photoURL
 
-        const product ={productName,productPhoto,productPrice,category, productShortDes, description, uploaderName,uploaderPhoto }
+        const product ={productName,productPhoto,productPhoto2, productPhoto3,productPhoto4, productPrice,category, productShortDes, gameTrailer, description, uploaderName,uploaderPhoto }
         console.log(product);
 
         fetch('http://localhost:5000/games',{
@@ -60,16 +64,16 @@ const AddProduct = () => {
         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
                 <label className="text-white dark:text-gray-200" >Game Name</label>
-                <input id="productName" type="text" name="productName" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+                <input id="productName" required type="text" name="productName" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
             <div>
                 <label className="text-white dark:text-gray-200" >Game Price</label>
-                <input id="productPrice" type="number" name="productPrice" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+                <input id="productPrice" required type="number" name="productPrice" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
 
             <div>
                 <label className="text-white dark:text-gray-200">Select Category</label>
-                <select name="category" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select name="category" required className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                     <option>Action</option>
                     <option>Adventure</option>
                     <option>Horror</option>
@@ -79,15 +83,31 @@ const AddProduct = () => {
           
               <div>
                 <label className="text-white dark:text-gray-200" >Game Photo Url</label>
-                <input id="productPhoto" type="text" name="productPhoto" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+                <input id="productPhoto" required type="text" name="productPhoto" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+            </div>
+              <div>
+                <label className="text-white dark:text-gray-200" >Game Photo Url 2</label>
+                <input id="productPhoto2" required type="text" name="productPhoto2" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+            </div>
+              <div>
+                <label className="text-white dark:text-gray-200" >Game Photo Url 3</label>
+                <input id="productPhoto3" required type="text" name="productPhoto3" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+            </div>
+              <div>
+                <label className="text-white dark:text-gray-200" >Game Photo Url 4</label>
+                <input id="productPhoto4" required type="text" name="productPhoto4" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
               <div>
                 <label className="text-white dark:text-gray-200" >Game Short Description</label>
-                <input id="productShortDes" type="text" name="productShortDes" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+                <input id="productShortDes" required type="text" name="productShortDes" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+            </div>
+              <div>
+                <label className="text-white dark:text-gray-200" >Game Trailer Link</label>
+                <input id="gameTrailer" required type="text" name="gameTrailer" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
             <div>
                 <label className="text-white dark:text-gray-200" >Game Description</label>
-                <textarea id="textarea" type="textarea" name="description" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                <textarea id="textarea" required type="textarea" name="description" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
             </div>
             <div>
 
