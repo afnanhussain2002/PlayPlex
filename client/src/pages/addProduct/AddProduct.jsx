@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
   const {user} = useContext(AuthContext)
@@ -29,7 +30,13 @@ const AddProduct = () => {
         .then(data => {
           console.log(data);
           if (data.insertedId) {
-            alert('game is added')
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Game Added Successfully",
+              showConfirmButton: false,
+              timer: 1500
+            });
             form.reset()
           }
         })
