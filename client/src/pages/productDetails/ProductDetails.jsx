@@ -1,24 +1,9 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const ProductDetails = () => {
-  const loadProducts = useLoaderData();
-  console.log(loadProducts);
-  const { id } = useParams();
-  if (!loadProducts) {
-    return <div>Loading...</div>;
-  }
-  const findProduct = loadProducts.find((product) => product.id == id);
-  console.log(findProduct);
-  console.log(id);
-  const {
-    creator_img,
-    creator_name,
-    price,
-    product_img,
-    product_name,
-    short_description,
-    release_date,
-  } = findProduct;
+  const detailsProduct = useLoaderData();
+  const { _id, productName, productPrice, productPhoto, uploaderName, uploaderPhoto, productShortDes, description} = detailsProduct
+ 
   return (
     <div>
       <div className="hero min-h-[600px] bg-[url('https://themedox.com/mykd/wp-content/themes/mykd/assets/img/bg/breadcrumb_bg02.jpg')] border-b-8 border-main-color">
@@ -38,7 +23,7 @@ const ProductDetails = () => {
               <div className="h-[460px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
                 <img
                   className="w-full h-full object-cover"
-                  src={product_img}
+                  src={productPhoto}
                   alt="Product Image"
                 />
               </div>
@@ -57,10 +42,10 @@ const ProductDetails = () => {
             </div>
             <div className="md:flex-1 px-4">
               <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-                {product_name}
+                {productName}
               </h2>
               <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                {short_description}
+                {productShortDes}
               </p>
               <div className="flex mb-4">
                 <div className="mr-4">
@@ -68,7 +53,7 @@ const ProductDetails = () => {
                     Price:
                   </span>
                   <span className="text-gray-600 ml-1 dark:text-gray-300">
-                      ${price}
+                      ${productPrice}
                   </span>
                 </div>
                 <div>
@@ -118,14 +103,7 @@ const ProductDetails = () => {
                   Product Description:
                 </span>
                 <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  sed ante justo. Integer euismod libero id mauris malesuada
-                  tincidunt. Vivamus commodo nulla ut lorem rhoncus aliquet.
-                  Duis dapibus augue vel ipsum pretium, et venenatis sem
-                  blandit. Quisque ut erat vitae nisi ultrices placerat non eget
-                  velit. Integer ornare mi sed ipsum lacinia, non sagittis
-                  mauris blandit. Morbi fermentum libero vel nisl suscipit, nec
-                  tincidunt mi consectetur.
+                  {description}
                 </p>
               </div>
             </div>

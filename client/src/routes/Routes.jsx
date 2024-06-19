@@ -25,7 +25,7 @@ const router = createBrowserRouter([
                {
                   path:'/product/:id',
                   element:<PrivateRoute><ProductDetails/></PrivateRoute>,
-                  loader:() => fetch('./data/product.json')
+                  loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`)
 
                },
                {
