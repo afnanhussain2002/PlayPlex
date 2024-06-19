@@ -10,13 +10,13 @@ const AddProduct = () => {
         const productPrice = form.productPrice.value;
         const category = form.category.value;
         const productPhoto = form.productPhoto.value;
+        const productShortDes = form.productShortDes.value;
         const description = form.description.value;
         const uploaderName = user.displayName;
         const uploaderPhoto = user.photoURL
 
-        const product ={productName,productPhoto,productPrice,category, description, uploaderName,uploaderPhoto }
+        const product ={productName,productPhoto,productPrice,category, productShortDes, description, uploaderName,uploaderPhoto }
         console.log(product);
-        console.log(user.displayName);
 
         fetch('http://localhost:5000/games',{
          method:'POST',
@@ -40,7 +40,7 @@ const AddProduct = () => {
       <div className="hero min-h-[600px] bg-[url('https://themedox.com/mykd/wp-content/themes/mykd/assets/img/bg/breadcrumb_bg02.jpg')] border-b-8 border-main-color">
         <div className="hero-content text-center">
           <div className="max-w-lg">
-            <h1 className="text-6xl font-bold text-white">ADD PRODUCT</h1>
+            <h1 className="text-6xl font-bold text-white">ADD GAME</h1>
           </div>
         </div>
       </div>
@@ -48,15 +48,15 @@ const AddProduct = () => {
       {/* full form part */}
 
       <div className="max-w-4xl p-6 mx-auto rounded-md shadow-lg shadow-green-500/50 border-4 border-main-color mt-20 mb-20">
-    <h1 className="text-xl font-bold text-white capitalize dark:text-white">Add Product</h1>
+    <h1 className="text-xl font-bold text-white capitalize dark:text-white">Add Game</h1>
     <form onSubmit={handleAddProduct}>
         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
-                <label className="text-white dark:text-gray-200" >Product Name</label>
+                <label className="text-white dark:text-gray-200" >Game Name</label>
                 <input id="productName" type="text" name="productName" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
             <div>
-                <label className="text-white dark:text-gray-200" >Product Price</label>
+                <label className="text-white dark:text-gray-200" >Game Price</label>
                 <input id="productPrice" type="number" name="productPrice" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
 
@@ -71,11 +71,15 @@ const AddProduct = () => {
             </div>
           
               <div>
-                <label className="text-white dark:text-gray-200" >Product Photo Url</label>
+                <label className="text-white dark:text-gray-200" >Game Photo Url</label>
                 <input id="productPhoto" type="text" name="productPhoto" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
             </div>
+              <div>
+                <label className="text-white dark:text-gray-200" >Game Short Description</label>
+                <input id="productShortDes" type="text" name="productShortDes" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+            </div>
             <div>
-                <label className="text-white dark:text-gray-200" >Product Description</label>
+                <label className="text-white dark:text-gray-200" >Game Description</label>
                 <textarea id="textarea" type="textarea" name="description" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
             </div>
             <div>
@@ -84,7 +88,7 @@ const AddProduct = () => {
         </div>
 
         <div className="flex justify-end mt-6">
-            <button className=" p-2 rounded-md bg-main-color text-black font-bold">Add Product</button>
+            <button className=" p-2 rounded-md bg-main-color text-black font-bold">Add Game</button>
         </div>
     </form>
 </div>
