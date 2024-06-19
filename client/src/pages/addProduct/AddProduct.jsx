@@ -1,5 +1,8 @@
-const AddProduct = () => {
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
+const AddProduct = () => {
+  const {user} = useContext(AuthContext)
     const handleAddProduct = e =>{
         e.preventDefault()
         const form = e.target ;
@@ -8,9 +11,12 @@ const AddProduct = () => {
         const category = form.category.value;
         const productPhoto = form.productPhoto.value;
         const description = form.description.value;
+        const uploaderName = user.displayName;
+        const uploaderPhoto = user.photoURL
 
-        const product ={productName,productPhoto,productPrice,category, description}
+        const product ={productName,productPhoto,productPrice,category, description, uploaderName,uploaderPhoto }
         console.log(product);
+        console.log(user.displayName);
 
         fetch('http://localhost:5000/games',{
          method:'POST',
@@ -57,10 +63,10 @@ const AddProduct = () => {
             <div>
                 <label className="text-white dark:text-gray-200">Select Category</label>
                 <select name="category" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                    <option>Surabaya</option>
-                    <option>Jakarta</option>
-                    <option>Tangerang</option>
-                    <option>Bandung</option>
+                    <option>Action</option>
+                    <option>Adventure</option>
+                    <option>Horror</option>
+                    <option>Racing</option>
                 </select>
             </div>
           
