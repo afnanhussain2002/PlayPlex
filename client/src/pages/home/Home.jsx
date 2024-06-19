@@ -1,3 +1,4 @@
+import VideoBanner from "../../components/VideoBanner/VideoBanner";
 import AboutUsSection from "../../components/aboutUsSection/AboutUsSection";
 import ActiveTeam from "../../components/activeTeam/ActiveTeam";
 import HomeHeroSection from "../../components/homeHeroSection/HomeHeroSection";
@@ -11,6 +12,7 @@ const Home = () => {
             <Products/>
             <AboutUsSection/>
             <ActiveTeam/>
+            
         </>
     );
 };
