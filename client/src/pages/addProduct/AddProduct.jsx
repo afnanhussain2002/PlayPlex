@@ -11,6 +11,22 @@ const AddProduct = () => {
 
         const product ={productName,productPhoto,productPrice,category, description}
         console.log(product);
+
+        fetch('http://localhost:5000/games',{
+         method:'POST',
+         headers:{
+          'content-type':'application/json'
+         },
+         body:JSON.stringify(product)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          if (data.insertedId) {
+            alert('game is added')
+            form.reset()
+          }
+        })
     }
   return (
     <div>
