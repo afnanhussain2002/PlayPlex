@@ -10,7 +10,7 @@ const Products = () => {
         .then(data => setProducts(data))
     })
     return (
-        <div className="grid grid-cols-2 gap-5 mt-7 max-w-7xl mx-auto lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 mt-7 max-w-7xl mx-auto lg:grid-cols-3">
             {
               products.slice(0,3).map(product =><SingleProduct key={product.id} product={product}></SingleProduct> )  
             }
