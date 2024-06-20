@@ -10,7 +10,7 @@ const ProductDetails = () => {
   const addGameInfo = {productName, productPrice, productShortDes, productPhoto, userEmail:user.email}
   const handleAddToCart = (_id) =>{
   
-    fetch('http://localhost:5000/games/cart', {
+    fetch('http://localhost:5000/cart', {
       method:'POST',
       headers:{
         'content-type':'application/json'

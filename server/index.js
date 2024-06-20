@@ -75,7 +75,7 @@ async function run() {
         res.send(game)
     })
     // Get all data of single user
-    app.get('/games/:email', async(req, res) =>{
+    app.get('/:email', async(req, res) =>{
       const email = req.params.email;
         console.log(email);
         const query = {uploaderEmail:email}
@@ -83,13 +83,6 @@ async function run() {
         const game = await gamesCollection.find(query).toArray()
         console.log(game);
         res.send(game)
-    })
-    // Get all data from category
-    app.get('/games/:category', async(req, res) =>{
-      const category = req.params.category;
-      const query = {category: category};
-      const result = await gamesCollection.find(query).toArray
-      res.send(result)
     })
        
     // Get the all data
@@ -100,11 +93,20 @@ async function run() {
     })
     // add to cart collection
 
-    app.post('/games/cart', async(req,res) =>{
+    // insert data in cart
+    app.post('/cart', async(req,res) =>{
       const cart = req.body;
       const result = await cartCollection.insertOne(cart)
       res.send(result)
     })
+// read all cart page data
+    app.get('/cart', async(req,res) =>{
+      const allCartGame = cartCollection.find()
+      const result = await allCartGame.toArray()
+      res.send(result)
+      
+    })
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
