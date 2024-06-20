@@ -41,7 +41,17 @@ async function run() {
         const options = {upsert: true}
         const updateGame ={
             $set:{
-                name:game.name
+                productName:game.productName,
+                productPrice:game.productPrice,
+                category:game.category,
+                productPhoto:game.productPhoto,
+                productPhoto2:game.productPhoto2,
+                productPhoto3:game.productPhoto3,
+                productPhoto4:game.productPhoto4,
+                productShortDes:game.productShortDes,
+                gameTrailer:game.gameTrailer,
+                description:game.description
+
             }
         }
 

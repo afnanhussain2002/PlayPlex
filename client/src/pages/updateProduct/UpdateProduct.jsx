@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const UpdateProduct = () => {
     const updateGame = useLoaderData()
+
+    const [categoryValue, setCategoryValue] = useState(updateGame.category)
+
+    const handleCategoryChange = e => setCategoryValue(e.target.value)
    
       const handleAddProduct = e =>{
           e.preventDefault()
@@ -18,8 +23,10 @@ const UpdateProduct = () => {
           const productShortDes = form.productShortDes.value;
           const gameTrailer = form.gameTrailer.value;
           const description = form.description.value;
+
+          setCategoryValue(category)
   
-          const product ={productName,productPhoto,productPhoto2, productPhoto3,productPhoto4, productPrice,category, productShortDes, gameTrailer, description, uploaderName,uploaderPhoto }
+          const updateProduct ={productName,productPhoto,productPhoto2, productPhoto3,productPhoto4, productPrice,category:{categoryValue}, productShortDes, gameTrailer, description }
           
           if (productName.length > 15) {
             return alert('Game name must be below 16 characters')
@@ -28,19 +35,19 @@ const UpdateProduct = () => {
           if (productShortDes.length > 80 || productShortDes.length < 50) {
             return alert('Short description must be more then 50 characters and below 80 characters')
           }
-          console.log(product);
+          console.log(updateProduct);
   
-          fetch('http://localhost:5000/games',{
-           method:'POST',
+          fetch(`http://localhost:5000/games/${updateGame._id}`,{
+           method:'PUT',
            headers:{
             'content-type':'application/json'
            },
-           body:JSON.stringify(product)
+           body:JSON.stringify(updateProduct)
           })
           .then(res => res.json())
           .then(data => {
             console.log(data);
-            if (data.insertedId) {
+            if (data.modifiedCount) {
               Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -80,11 +87,11 @@ const UpdateProduct = () => {
   
               <div>
                   <label className="text-white dark:text-gray-200">Select Category</label>
-                  <select name="category" defaultChecked={updateGame.category} required className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                      <option>Action</option>
-                      <option>Adventure</option>
-                      <option>Horror</option>
-                      <option>Racing</option>
+                  <select name="category" value={categoryValue} onChange={handleCategoryChange} required className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                      <option value={'Action'}>Action</option>
+                      <option value={'Adventure'}>Adventure</option>
+                      <option value={'Horror'}>Horror</option>
+                      <option value={'Racing'}>Racing</option>
                   </select>
               </div>
             
