@@ -22,8 +22,12 @@ const AddProduct = () => {
 
         const product ={productName,productPhoto,productPhoto2, productPhoto3,productPhoto4, productPrice,category, productShortDes, gameTrailer, description, uploaderName,uploaderPhoto }
         
-        if (productShortDes.length > 70) {
-          return alert('Short description must be below 70 characters')
+        if (productName.length > 15) {
+          return alert('Game name must be below 16 characters')
+        }
+
+        if (productShortDes.length > 80 || productShortDes.length < 50) {
+          return alert('Short description must be more then 50 characters and below 80 characters')
         }
         console.log(product);
 
