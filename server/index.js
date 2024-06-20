@@ -26,6 +26,7 @@ async function run() {
     await client.connect();
     const database = client.db("playPlexDB")
     const gamesCollection = database.collection("games")
+    const cartCollection = database.collection("cart")
 
     // create data using post 
     app.post('/games', async(req, res) =>{
@@ -77,7 +78,7 @@ async function run() {
     app.get('/games/:email', async(req, res) =>{
       const email = req.params.email;
         console.log(email);
-        const query = {uploaderEmail: email}
+        const query = {uploaderEmail:email}
         console.log(query);
         const game = await gamesCollection.find(query).toArray()
         console.log(game);
@@ -96,6 +97,13 @@ async function run() {
         const games = gamesCollection.find()
         const result = await games.toArray()
         res.send(result)
+    })
+    // add to cart collection
+
+    app.post('/games/cart', async(req,res) =>{
+      const cart = req.body;
+      const result = await cartCollection.insertOne(cart)
+      res.send(result)
     })
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
