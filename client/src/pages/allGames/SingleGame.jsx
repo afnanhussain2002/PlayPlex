@@ -1,7 +1,13 @@
+
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+
 
 const SingleGame = ({ game }) => {
-  console.log(game);
+
+  const {user} = useContext(AuthContext)
+
   const {
     _id,
     productName,
@@ -10,7 +16,12 @@ const SingleGame = ({ game }) => {
     productPhoto,
     uploaderName,
     uploaderPhoto,
+    uploaderEmail
   } = game;
+
+  const filterUpdate = user.email === uploaderEmail
+
+
   return (
     <>
       <div className=" shadow-lg shadow-green-500/50 border-2 border-main-color rounded-lg overflow-hidden my-10 lg:max-w-xs">
@@ -38,12 +49,15 @@ const SingleGame = ({ game }) => {
             </button>
           </Link>
         </div>
+       {
+        filterUpdate &&
         <Link to={`/update/${_id}`}>
-        <button className="btn-md border-2 w-full border-main-color text-main-color rounded font-bold mr-2">
-          Update Game
+        <button className="px-3 py-1 bg-main-color text-sm text-black font-semibold rounded">
+          Update
         </button>
+      </Link>
+       }
         
-        </Link>
       </div>
     </>
   );

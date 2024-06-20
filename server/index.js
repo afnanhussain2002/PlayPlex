@@ -73,6 +73,24 @@ async function run() {
         const game = await gamesCollection.findOne(query)
         res.send(game)
     })
+    // Get all data of single user
+    app.get('/games/:email', async(req, res) =>{
+      const email = req.params.email;
+        console.log(email);
+        const query = {uploaderEmail: email}
+        console.log(query);
+        const game = await gamesCollection.find(query).toArray()
+        console.log(game);
+        res.send(game)
+    })
+    // Get all data from category
+    app.get('/games/:category', async(req, res) =>{
+      const category = req.params.category;
+      const query = {category: category};
+      const result = await gamesCollection.find(query).toArray
+      res.send(result)
+    })
+       
     // Get the all data
     app.get('/games', async(req, res) =>{
         const games = gamesCollection.find()

@@ -1,8 +1,11 @@
 import { useLoaderData } from "react-router-dom";
 import SingleGame from "./SingleGame";
 
+
 const AllGames = () => {
   const allGames = useLoaderData()
+ 
+
   return (
     <div>
       <div className="hero min-h-[600px] bg-[url('https://themedox.com/mykd/wp-content/themes/mykd/assets/img/bg/breadcrumb_bg02.jpg')] border-b-8 border-main-color">

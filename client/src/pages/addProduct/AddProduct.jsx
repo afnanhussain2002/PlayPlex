@@ -18,9 +18,10 @@ const AddProduct = () => {
         const gameTrailer = form.gameTrailer.value;
         const description = form.description.value;
         const uploaderName = user.displayName;
-        const uploaderPhoto = user.photoURL
+        const uploaderPhoto = user.photoURL;
+        const uploaderEmail = user.email
 
-        const product ={productName,productPhoto,productPhoto2, productPhoto3,productPhoto4, productPrice,category, productShortDes, gameTrailer, description, uploaderName,uploaderPhoto }
+        const product ={productName,productPhoto,productPhoto2, productPhoto3,productPhoto4, productPrice,category, productShortDes, gameTrailer, description, uploaderName,uploaderPhoto, uploaderEmail }
         
         if (productName.length > 15) {
           return alert('Game name must be below 16 characters')

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../logo/Logo";
 import HeaderBtn from "../../buttons/headerBtn/HeaderBtn";
 import { FaRegEdit } from "react-icons/fa";
@@ -133,10 +133,10 @@ const Header = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a className="justify-between">
+                  <Link to={`/profile/${user.email}`} className="justify-between">
                     Profile
                     <span className="badge">New</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a>Settings</a>

@@ -10,6 +10,7 @@ import PrivateRoute from "../provider/PrivateRoute"
 import AddProduct from "../pages/addProduct/AddProduct"
 import AllGames from"../pages/allGames/AllGames"
 import UpdateProduct from "../pages/updateProduct/UpdateProduct"
+import Profile from "../pages/profile/Profile"
 
 const router = createBrowserRouter([
          {
@@ -43,7 +44,12 @@ const router = createBrowserRouter([
                   path:'/update/:id',
                   element:<UpdateProduct/>,
                   loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`) 
-               }
+               },
+               /* {
+                  path:'/profile/:email',
+                  element:<Profile/>,
+                  loader:({params}) => fetch (`http://localhost:5000/games/${params.email}`)
+               } */
             ]
          },
          {path:'/register', element:<Register/>},
