@@ -45,6 +45,9 @@ const router = createBrowserRouter([
                   element:<UpdateProduct/>,
                   loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`) 
                },
+               {
+                  path:'/cart'
+               }
                /* {
                   path:'/profile/:email',
                   element:<Profile/>,

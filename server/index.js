@@ -100,12 +100,14 @@ async function run() {
       res.send(result)
     })
 // read all cart page data
-    app.get('/cart', async(req,res) =>{
-      const allCartGame = cartCollection.find()
-      const result = await allCartGame.toArray()
-      res.send(result)
+    app.get('/cart/:email', async(req,res) =>{
+      const email = req.params.email;
+      const query ={userEmail: email}
+      const cartFilter = await cartCollection.find(query).toArray()
+      res.send(cartFilter)
       
     })
+
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
