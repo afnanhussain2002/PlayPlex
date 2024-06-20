@@ -40,7 +40,7 @@ const router = createBrowserRouter([
                   loader: () => fetch('http://localhost:5000/games')
                },
                {
-                  path:'update/:id',
+                  path:'/update/:id',
                   element:<UpdateProduct/>,
                   loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`) 
                }

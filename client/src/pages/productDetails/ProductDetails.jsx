@@ -30,12 +30,12 @@ const ProductDetails = () => {
               <div className="flex -mx-2 mb-4">
                 <div className="w-1/2 px-2">
                   <button className="btn-md border-2 w-full border-main-color text-main-color rounded font-bold mr-2">
-                    Add To Cart{" "}
+                    Add To Cart
                   </button>
                 </div>
                 <div className="w-1/2 px-2">
                   <button className="btn-md w-full bg-main-color text-black rounded font-bold shadow-lg shadow-green-500/50">
-                    Add Wishlist{" "}
+                    Add Wishlist
                   </button>
                 </div>
               </div>

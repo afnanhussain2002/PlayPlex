@@ -33,12 +33,17 @@ const SingleGame = ({ game }) => {
         <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
           <h1 className="text-main-color font-bold text-xl">${productPrice}</h1>
           <Link to={`/product/${_id}`}>
-          <button className="px-3 py-1 bg-main-color text-sm text-black font-semibold rounded">
-            See Details
-          </button>
-          
+            <button className="px-3 py-1 bg-main-color text-sm text-black font-semibold rounded">
+              See Details
+            </button>
           </Link>
         </div>
+        <Link to={`/update/${_id}`}>
+        <button className="btn-md border-2 w-full border-main-color text-main-color rounded font-bold mr-2">
+          Update Game
+        </button>
+        
+        </Link>
       </div>
     </>
   );
