@@ -9,6 +9,7 @@ import Login from "../pages/login/Login"
 import PrivateRoute from "../provider/PrivateRoute"
 import AddProduct from "../pages/addProduct/AddProduct"
 import AllGames from"../pages/allGames/AllGames"
+import UpdateProduct from "../pages/updateProduct/UpdateProduct"
 
 const router = createBrowserRouter([
          {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
                   path:'/allGames',
                   element:<AllGames/>,
                   loader: () => fetch('http://localhost:5000/games')
+               },
+               {
+                  path:'update/:id',
+                  element:<UpdateProduct/>,
+                  loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`) 
                }
             ]
          },
