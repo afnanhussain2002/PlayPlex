@@ -1,13 +1,20 @@
 import { useLoaderData } from "react-router-dom";
-import VideoBanner from "../../components/VideoBanner/VideoBanner";
 
 const ProductDetails = () => {
   const detailsProduct = useLoaderData();
-  const { _id, productName, productPrice, productPhoto, uploaderName, uploaderPhoto, productShortDes, description, gameTrailer} = detailsProduct
+  const { _id, productName, productPrice, productPhoto, uploaderName, uploaderPhoto, productShortDes, description} = detailsProduct
  
   return (
     <div>
-      <VideoBanner videoLink={gameTrailer}/>
+      <div className="hero min-h-[600px] bg-[url('https://themedox.com/mykd/wp-content/themes/mykd/assets/img/bg/breadcrumb_bg02.jpg')] border-b-8 border-main-color">
+        <div className="hero-content text-center">
+          <div className="max-w-lg">
+            <h1 className="text-6xl font-bold text-white">
+              PRODUCT SINGLE
+            </h1>
+          </div>
+        </div>
+      </div>
 
       <div className="bg-gray-100 dark:bg-gray-800 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
