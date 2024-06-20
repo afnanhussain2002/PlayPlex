@@ -1,9 +1,37 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const ProductDetails = () => {
+  const {user} = useContext(AuthContext)
   const detailsProduct = useLoaderData();
   const { _id, productName, productPrice, productPhoto, uploaderName, uploaderPhoto, productShortDes, description} = detailsProduct
- 
+  const addGameInfo = {productName, productPrice, productShortDes, productPhoto, userEmail:user.email}
+  const handleAddToCart = (_id) =>{
+  
+    fetch('http://localhost:5000/games/cart', {
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(addGameInfo)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      console.log(data);
+      if (data.insertedId) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Added In Your Cart",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    })
+
+  }
   return (
     <div>
       <div className="hero min-h-[600px] bg-[url('https://themedox.com/mykd/wp-content/themes/mykd/assets/img/bg/breadcrumb_bg02.jpg')] border-b-8 border-main-color">
@@ -29,7 +57,7 @@ const ProductDetails = () => {
               </div>
               <div className="flex -mx-2 mb-4">
                 <div className="w-1/2 px-2">
-                  <button className="btn-md border-2 w-full border-main-color text-main-color rounded font-bold mr-2">
+                  <button onClick={handleAddToCart} className="btn-md border-2 w-full border-main-color text-main-color rounded font-bold mr-2">
                     Add To Cart
                   </button>
                 </div>
