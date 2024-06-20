@@ -10,7 +10,7 @@ const ProductDetails = () => {
         <div className="hero-content text-center">
           <div className="max-w-lg">
             <h1 className="text-6xl font-bold text-white">
-              PRODUCT SINGLE
+              GAME SINGLE PAGE
             </h1>
           </div>
         </div>

@@ -8,6 +8,7 @@ import Register from "../pages/register/Register"
 import Login from "../pages/login/Login"
 import PrivateRoute from "../provider/PrivateRoute"
 import AddProduct from "../pages/addProduct/AddProduct"
+import AllGames from"../pages/allGames/AllGames"
 
 const router = createBrowserRouter([
          {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
                {
                   path:'/addProduct',
                   element:<PrivateRoute><AddProduct/></PrivateRoute>
+               },
+               {
+                  path:'/allGames',
+                  element:<AllGames/>
                }
             ]
          },
