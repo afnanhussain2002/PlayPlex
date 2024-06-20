@@ -4,29 +4,33 @@ import { Link } from "react-router-dom";
 
 const SingleProduct = ({product}) => {
     
-    const { _id, productName, productPrice, productPhoto, uploaderName, uploaderPhoto} = product
+    const { _id, productName, productPrice, productPhoto, productShortDes, uploaderName, uploaderPhoto} = product
     return (
         <>
-           <div className="bg-sec-color border border-main-color flex flex-col justify-center gap-5 items-center rounded-lg py-5 
-            shadow-lg shadow-green-500/50 lg:flex-row">
-            <div>
-              <img className="w-28 h-20 rounded-lg" src={productPhoto} alt={productName} />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-white">{productName}</h3>
-              <div className="flex items-center gap-1 text-xs">
-                <img className="w-8 rounded-full" src={uploaderPhoto} alt="creator" />
-                <p>{uploaderName} ||</p>
-                <p>Creator</p>
-              </div>
-              <div className="flex items-center gap-5 justify-around border p-2 rounded border-main-color">
-                <p className="font-bold">${productPrice}</p>
-                <div>
-                 <Link to={`/product/${_id}`}><button className=" btn-sm bg-main-color text-black rounded">Buy Now</button></Link> 
-                </div>
-              </div>
-            </div>
-           </div>
+            <div className=" shadow-lg shadow-green-500/50 border-2 border-main-color rounded-lg overflow-hidden my-10 lg:max-w-xs">
+        <div className="px-4 py-2">
+          <h1 className="text-main-color font-bold text-3xl uppercase">
+            {productName}
+          </h1>
+          <p className="text-white text-sm mt-1">{productShortDes}</p>
+        </div>
+        <div className="flex items-center gap-2 text-xs px-4 py-2 text-white">
+          <img className="w-8 rounded-full" src={uploaderPhoto} alt="creator" />
+          <p>{uploaderName} ||</p>
+          <p>Creator</p>
+        </div>
+        <img
+          className="h-56 w-full object-cover mt-2"
+          src={productPhoto}
+          alt={productName}
+        />
+        <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
+          <h1 className="text-main-color font-bold text-xl">${productPrice}</h1>
+         <Link to={`/product/${_id}`}><button className="px-3 py-1 bg-main-color text-sm text-black font-semibold rounded">
+            See Details
+          </button></Link> 
+        </div>
+      </div>
         </>
     );
 };
