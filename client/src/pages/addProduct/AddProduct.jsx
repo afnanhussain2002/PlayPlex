@@ -21,6 +21,10 @@ const AddProduct = () => {
         const uploaderPhoto = user.photoURL
 
         const product ={productName,productPhoto,productPhoto2, productPhoto3,productPhoto4, productPrice,category, productShortDes, gameTrailer, description, uploaderName,uploaderPhoto }
+        
+        if (productShortDes.length > 70) {
+          return alert('Short description must be below 70 characters')
+        }
         console.log(product);
 
         fetch('http://localhost:5000/games',{
