@@ -20,8 +20,7 @@ const MyCart = () => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          iconColor: '#AF7EEB',
-          title: 'Your Todo has been Deleted',
+          title: 'Your Game has been Deleted',
           showConfirmButton: false,
           timer: 1500,
         });

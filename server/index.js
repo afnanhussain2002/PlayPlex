@@ -87,9 +87,7 @@ async function run() {
       const result = await games.toArray()
       res.send(result)
   })
-    
-       
-   
+         
     // add to cart collection
 
     // insert data in cart
