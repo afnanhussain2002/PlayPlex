@@ -52,9 +52,9 @@ const router = createBrowserRouter([
                   loader:({params}) => fetch(`http://localhost:5000/cart/${params.email}`)
                },
                {
-                  path:'/:email',
+                  path:'/games/profile/:email',
                   element:<Profile/>,
-                  loader:({params}) => fetch (`http://localhost:5000/games/${params.email}`)
+                  loader:({params}) => fetch (`http://localhost:5000/games/profile/${params.email}`)
                }
             ]
          },
