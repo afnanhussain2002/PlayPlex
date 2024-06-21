@@ -7,6 +7,7 @@ const MyCart = () => {
   const loadCartGames = useLoaderData();
   const [cartGames, setCartGames] = useState(loadCartGames)
 
+  
   const handleDeleteProduct = _id =>{
 
     fetch(`http://localhost:5000/cart/${_id}`,{
@@ -16,7 +17,14 @@ const MyCart = () => {
     .then(data => {
       console.log(data);
       if(data.deletedCount > 0){
-        alert('delete successfully')
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          iconColor: '#AF7EEB',
+          title: 'Your Todo has been Deleted',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
      const remainingGames = cartGames.filter(game => game._id !== _id)
      setCartGames(remainingGames)

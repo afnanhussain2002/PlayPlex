@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import ImageSlider from "../../components/imageSlider/ImageSlider";
 
 const ProductDetails = () => {
   const {user} = useContext(AuthContext)
   const detailsProduct = useLoaderData();
-  const { _id, productName, productPrice, productPhoto, uploaderName, uploaderPhoto, productShortDes, description} = detailsProduct
+  const { _id, productName, productPrice, productPhoto, productPhoto2, productPhoto3, productPhoto4, productShortDes, description} = detailsProduct
   const addGameInfo = {productName, productPrice, productShortDes, productPhoto, userEmail:user.email}
   const [cartProducts, setCartProducts] = useState([])
 
@@ -122,39 +123,7 @@ const ProductDetails = () => {
                   </span>
                 </div>
               </div>
-              <div className="mb-4">
-                <span className="font-bold text-gray-700 dark:text-gray-300">
-                  Select Color:
-                </span>
-                <div className="flex items-center mt-2">
-                  <button className="w-6 h-6 rounded-full bg-gray-800 dark:bg-gray-200 mr-2"></button>
-                  <button className="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
-                  <button className="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
-                  <button className="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
-                </div>
-              </div>
-              <div className="mb-4">
-                <span className="font-bold text-gray-700 dark:text-gray-300">
-                  Select Size:
-                </span>
-                <div className="flex items-center mt-2">
-                  <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                    S
-                  </button>
-                  <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                    M
-                  </button>
-                  <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                    L
-                  </button>
-                  <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                    XL
-                  </button>
-                  <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                    XXL
-                  </button>
-                </div>
-              </div>
+            
               <div>
                 <span className="font-bold text-gray-700 dark:text-gray-300">
                   Product Description:
@@ -166,6 +135,7 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
+      <ImageSlider img1={productPhoto} img2={productPhoto2} img3={productPhoto3} img4={productPhoto4}/>
       </div>
     </div>
   );
