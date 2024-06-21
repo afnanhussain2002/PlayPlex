@@ -1,9 +1,27 @@
 import { useLoaderData } from "react-router-dom";
 import MyCartData from "./MyCartData";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const MyCart = () => {
   const loadCartGames = useLoaderData();
-  console.log(loadCartGames);
+  const [cartGames, setCartGames] = useState(loadCartGames)
+
+  const handleDeleteProduct = _id =>{
+
+    fetch(`http://localhost:5000/cart/${_id}`,{
+      method:"DELETE",
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.deletedCount > 0){
+        alert('delete successfully')
+      }
+     const remainingGames = cartGames.filter(game => game._id !== _id)
+     setCartGames(remainingGames)
+  })
+}
 
   return (
     <div>
@@ -16,7 +34,7 @@ const MyCart = () => {
       </div>
       <div className="grid grid-cols-1 gap-5 mt-7 max-w-7xl mx-auto lg:grid-cols-3">
         {
-          loadCartGames.map(game => <MyCartData key={game._id} game={game}></MyCartData>)
+          cartGames.map(game => <MyCartData key={game._id} game={game} handleDeleteProduct={handleDeleteProduct}></MyCartData>)
         }
       </div>
     </div>

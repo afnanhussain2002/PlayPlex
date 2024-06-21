@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -8,28 +8,57 @@ const ProductDetails = () => {
   const detailsProduct = useLoaderData();
   const { _id, productName, productPrice, productPhoto, uploaderName, uploaderPhoto, productShortDes, description} = detailsProduct
   const addGameInfo = {productName, productPrice, productShortDes, productPhoto, userEmail:user.email}
-  const handleAddToCart = (_id) =>{
-  
-    fetch('http://localhost:5000/cart', {
-      method:'POST',
-      headers:{
-        'content-type':'application/json'
-      },
-      body: JSON.stringify(addGameInfo)
-    })
+  const [cartProducts, setCartProducts] = useState([])
+
+  useEffect(() =>{
+    fetch(`http://localhost:5000/cart/${user.email}`)
     .then(res => res.json())
-    .then(data =>{
-      console.log(data);
-      if (data.insertedId) {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Added In Your Cart",
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
-    })
+    .then(data => setCartProducts(data))
+  },[user])
+  // cart handle function
+  const handleAddToCart = () =>{
+    const stopCartDuplicate = cartProducts.find(cart => cart.productName === productName)
+
+    if (stopCartDuplicate) {
+      return  Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "This Game Already Added",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+
+      fetch('http://localhost:5000/cart', {
+        method:'POST',
+        headers:{
+          'content-type':'application/json'
+        },
+        body: JSON.stringify(addGameInfo)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data);
+        if (stopCartDuplicate) {
+          return  Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "This Game Already Added",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }else if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Added In Your Cart",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
+    
+  
 
   }
   return (

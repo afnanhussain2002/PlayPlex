@@ -97,6 +97,14 @@ async function run() {
       const result = await cartCollection.insertOne(cart)
       res.send(result)
     })
+
+    // delete cart item
+    app.delete('/cart/:id', async(req,res) =>{
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)}
+      const result = await cartCollection.deleteOne(query)
+      res.send(result)
+    })
 // read all cart page data
     app.get('/cart/:email', async(req,res) =>{
       const email = req.params.email;

@@ -1,15 +1,13 @@
 
 
-const MyCartData = ({game}) => {
+const MyCartData = ({game, handleDeleteProduct}) => {
     const {
         _id,
         productName,
         productPrice,
         productShortDes,
-        productPhoto,
-        uploaderName,
-        uploaderPhoto,
-        uploaderEmail
+        productPhoto
+
       } = game;
     return (
         <>
@@ -20,11 +18,7 @@ const MyCartData = ({game}) => {
           </h1>
           <p className="text-white text-sm mt-1">{productShortDes}</p>
         </div>
-        <div className="flex items-center gap-2 text-xs px-4 py-2 text-white">
-          <img className="w-8 rounded-full" src={uploaderPhoto} alt="creator" />
-          <p>{uploaderName} ||</p>
-          <p>Creator</p>
-        </div>
+       
         <img
           className="h-56 w-full object-cover mt-2"
           src={productPhoto}
@@ -36,7 +30,7 @@ const MyCartData = ({game}) => {
           <button className="px-3 py-1 bg-main-color text-sm text-black font-semibold rounded">
               Pay
             </button>
-        <button className="px-3 py-1 bg-main-color text-sm text-black font-semibold rounded">
+        <button onClick={() =>handleDeleteProduct(_id)} className="px-3 py-1 bg-main-color text-sm text-black font-semibold rounded">
           Delete
         </button>
           </div>

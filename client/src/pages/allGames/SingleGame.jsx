@@ -14,8 +14,8 @@ const SingleGame = ({ game }) => {
     productShortDes,
     productPhoto,
     uploaderName,
-    uploaderPhoto,
-    uploaderEmail
+    uploaderPhoto
+
   } = game;
 
   return (
