@@ -74,19 +74,20 @@ async function run() {
         const game = await gamesCollection.findOne(query)
         res.send(game)
     })
+    // Get all data of single user
+    app.get('/games/profile/:email', async(req, res) =>{
+      const email = req.params.email;
+        const query = {uploaderEmail:email}
+        const game = await gamesCollection.find(query).toArray()
+        res.send(game)
+    })
      // Get the all data
      app.get('/games', async(req, res) =>{
       const games = gamesCollection.find()
       const result = await games.toArray()
       res.send(result)
   })
-    // Get all data of single user
-    app.get('/:email', async(req, res) =>{
-      const email = req.params.email;
-        const query = {uploaderEmail:email}
-        const game = await gamesCollection.find(query).toArray()
-        res.send(game)
-    })
+    
        
    
     // add to cart collection

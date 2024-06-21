@@ -50,12 +50,12 @@ const router = createBrowserRouter([
                   path:'/cart/:email',
                   element:<MyCart/>,
                   loader:({params}) => fetch(`http://localhost:5000/cart/${params.email}`)
-               }
-               /* {
-                  path:'/profile/:email',
+               },
+               {
+                  path:'/:email',
                   element:<Profile/>,
                   loader:({params}) => fetch (`http://localhost:5000/games/${params.email}`)
-               } */
+               }
             ]
          },
          {path:'/register', element:<Register/>},

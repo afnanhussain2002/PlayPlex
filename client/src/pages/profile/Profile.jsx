@@ -6,7 +6,7 @@ const Profile = () => {
     console.log(userGame); 
     return (
         <div>
-            
+            This is profile page
         </div>
     );
 };
