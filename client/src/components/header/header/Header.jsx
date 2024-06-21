@@ -139,7 +139,7 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to={`/cart`}>My Cart</Link>
+                  <Link to={`/cart/${user.email}`}>My Cart</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>

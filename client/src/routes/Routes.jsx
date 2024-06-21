@@ -11,6 +11,7 @@ import AddProduct from "../pages/addProduct/AddProduct"
 import AllGames from"../pages/allGames/AllGames"
 import UpdateProduct from "../pages/updateProduct/UpdateProduct"
 import Profile from "../pages/profile/Profile"
+import MyCart from "../pages/myCart/MyCart"
 
 const router = createBrowserRouter([
          {
@@ -46,7 +47,9 @@ const router = createBrowserRouter([
                   loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`) 
                },
                {
-                  path:'/cart'
+                  path:'/cart/:email',
+                  element:<MyCart/>,
+                  loader:({params}) => fetch(`http://localhost:5000/cart/${params.email}`)
                }
                /* {
                   path:'/profile/:email',
