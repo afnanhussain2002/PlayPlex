@@ -21,13 +21,14 @@ const ProductDetails = () => {
     const stopCartDuplicate = cartProducts.find(cart => cart.productName === productName)
 
     if (stopCartDuplicate) {
-      return  Swal.fire({
+        Swal.fire({
         position: "top-end",
         icon: "error",
         title: "This Game Already Added",
         showConfirmButton: false,
         timer: 1500
       });
+      return;
     }
 
       fetch('http://localhost:5000/cart', {
