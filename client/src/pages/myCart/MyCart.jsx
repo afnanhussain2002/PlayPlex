@@ -10,7 +10,7 @@ const MyCart = () => {
   
   const handleDeleteProduct = _id =>{
 
-    fetch(`http://localhost:5000/cart/${_id}`,{
+    fetch(`https://playplex-server.vercel.app/cart/${_id}`,{
       method:"DELETE",
     })
     .then(res => res.json())

@@ -11,7 +11,7 @@ const Profile = () => {
     
     const handleDeleteProduct = _id =>{
   
-      fetch(`http://localhost:5000/games/${_id}`,{
+      fetch(`https://playplex-server.vercel.app/games/${_id}`,{
         method:"DELETE",
       })
       .then(res => res.json())
