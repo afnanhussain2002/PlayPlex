@@ -115,7 +115,7 @@ async function run() {
       res.send(result);
     });
     // Get a single data
-    app.get("/games/:id", logger, verifyToken, async (req, res) => {
+    app.get("/games/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const game = await gamesCollection.findOne(query);
@@ -155,6 +155,9 @@ async function run() {
     app.get("/cart/:email", logger, verifyToken, async (req, res) => {
       const email = req.params.email;
       console.log('user in the valid token', req.user);
+      /* if (req.query.email !== req.user.email) {
+        return res.status(403).send({message:'forbidden access'})
+      } */
       const query = { userEmail: email };
       const cartFilter = await cartCollection.find(query).toArray();
       res.send(cartFilter);

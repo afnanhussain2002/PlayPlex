@@ -16,6 +16,10 @@ const ProductDetails = () => {
     .then(res => res.json())
     .then(data => setCartProducts(data))
   },[user])
+
+ 
+
+  
   // cart handle function
   const handleAddToCart = () =>{
     const stopCartDuplicate = cartProducts.find(cart => cart.productName === productName)

@@ -1,30 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import MyCartData from "./MyCartData";
-import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import axios from "axios";
-import { AuthContext } from "../../provider/AuthProvider";
+import { useState } from "react";
+
 
 const MyCart = () => {
   const loadCartGames = useLoaderData();
   // const {user, loading} = useContext(AuthContext)
   const [cartGames, setCartGames] = useState(loadCartGames)
 
- /*  useEffect(()=>{
-    if (loading) {
-      return <span>Loading...</span>
-    }
-    axios.get(`http://localhost:5000/cart/${user.email}`)
-    .then(res =>{
-      setCartGames(res.data)
-    })
-  },[user, loading]) */
-
- 
-
-  
-
-  
   const handleDeleteProduct = _id =>{
 
     fetch(`http://localhost:5000/cart/${_id}`,{
@@ -58,7 +42,7 @@ const MyCart = () => {
       </div>
       <div className="grid grid-cols-1 gap-5 mt-7 max-w-7xl mx-auto lg:grid-cols-3">
         {
-          cartGames.map(game => <MyCartData key={game._id} game={game} handleDeleteProduct={handleDeleteProduct}></MyCartData>)
+          cartGames?.map(game => <MyCartData key={game._id} game={game} handleDeleteProduct={handleDeleteProduct}></MyCartData>)
         }
       </div>
     </div>
