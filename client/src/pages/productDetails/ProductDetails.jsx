@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -9,22 +9,22 @@ const ProductDetails = () => {
   const detailsProduct = useLoaderData();
   const { _id, productName, productPrice, productPhoto, productPhoto2, productPhoto3, productPhoto4, productShortDes, description} = detailsProduct
   const addGameInfo = {productName, productPrice, productShortDes, productPhoto, userEmail:user.email}
-  const [cartProducts, setCartProducts] = useState([])
+  // const [cartProducts, setCartProducts] = useState([])
 
-  useEffect(() =>{
+ /*  useEffect(() =>{
     fetch(`http://localhost:5000/cart/${user.email}`)
     .then(res => res.json())
     .then(data => setCartProducts(data))
-  },[user])
+  },[user]) */
 
  
 
   
   // cart handle function
   const handleAddToCart = () =>{
-    const stopCartDuplicate = cartProducts.find(cart => cart.productName === productName)
+    // const stopCartDuplicate = cartProducts?.find(cart => cart.productName === productName)
 
-    if (stopCartDuplicate) {
+   /*  if (stopCartDuplicate) {
         Swal.fire({
         position: "top-end",
         icon: "error",
@@ -33,7 +33,7 @@ const ProductDetails = () => {
         timer: 1500
       });
       return;
-    }
+    } */
 
       fetch('http://localhost:5000/cart', {
         method:'POST',
@@ -45,7 +45,7 @@ const ProductDetails = () => {
       .then(res => res.json())
       .then(data =>{
         console.log(data);
-        if (stopCartDuplicate) {
+       /*  if (stopCartDuplicate) {
           return  Swal.fire({
             position: "top-end",
             icon: "error",
@@ -53,7 +53,7 @@ const ProductDetails = () => {
             showConfirmButton: false,
             timer: 1500
           });
-        }else if (data.insertedId) {
+        } */ if (data.insertedId) {
           Swal.fire({
             position: "top-end",
             icon: "success",

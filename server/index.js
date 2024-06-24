@@ -155,9 +155,10 @@ async function run() {
     app.get("/cart/:email", logger, verifyToken, async (req, res) => {
       const email = req.params.email;
       console.log('user in the valid token', req.user);
-      /* if (req.query.email !== req.user.email) {
+      console.log('query email:', req.params.email, 'User Email:', req.user.email);
+      if (req.params.email !== req.user.email) {
         return res.status(403).send({message:'forbidden access'})
-      } */
+      }
       const query = { userEmail: email };
       const cartFilter = await cartCollection.find(query).toArray();
       res.send(cartFilter);
