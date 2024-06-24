@@ -29,7 +29,9 @@ const router = createBrowserRouter([
                {
                   path:'/product/:id',
                   element:<PrivateRoute><ProductDetails/></PrivateRoute>,
-                  loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`)
+                  loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`,{
+                     credentials:'include'
+                  })
 
                },
                {
@@ -44,7 +46,9 @@ const router = createBrowserRouter([
                {
                   path:'/update/:id',
                   element:<PrivateRoute><UpdateProduct/></PrivateRoute>,
-                  loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`) 
+                  loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`,{
+                     credentials:'include'
+                  }) 
                },
                {
                   path:'/cart/:email',
@@ -56,7 +60,9 @@ const router = createBrowserRouter([
                {
                   path:'/games/profile/:email',
                   element:<PrivateRoute><Profile/></PrivateRoute>,
-                  loader:({params}) => fetch (`http://localhost:5000/games/profile/${params.email}`)
+                  loader:({params}) => fetch (`http://localhost:5000/games/profile/${params.email}`,{
+                     credentials:'include'
+                  })
                }
             ]
          },

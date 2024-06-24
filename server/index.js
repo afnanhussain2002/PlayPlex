@@ -26,6 +26,29 @@ const client = new MongoClient(uri, {
   },
 });
 
+// my middle wares
+
+const logger = async(req,res, next) =>{
+  console.log('called:', req.host, req.originalUrl);
+  next()
+}
+
+const verifyToken = async(req,res,next) =>{
+  const token = req.cookies?.token
+  console.log('middleware token', token);
+  if (!token) {
+    return res.status(401).send({message:'forbidden access'})
+  }
+  jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(error, decoded) =>{
+    if (error) {
+      console.log(error);
+      return res.status(401).send({message:'Unauthorized'})
+    }
+    console.log('Value in the token', decoded);
+    req.user = decoded
+    next()
+  })
+}
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
@@ -35,7 +58,7 @@ async function run() {
     const cartCollection = database.collection("cart");
 
     // auth related api
-    app.post('/jwt', async(req,res) =>{
+    app.post('/jwt', logger, async(req,res) =>{
       const user = req.body;
       console.log(user);
       const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn:'1h'})
@@ -92,14 +115,14 @@ async function run() {
       res.send(result);
     });
     // Get a single data
-    app.get("/games/:id", async (req, res) => {
+    app.get("/games/:id", logger, verifyToken, async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const game = await gamesCollection.findOne(query);
       res.send(game);
     });
     // Get all data of single user
-    app.get("/games/profile/:email", async (req, res) => {
+    app.get("/games/profile/:email", logger, verifyToken, async (req, res) => {
       const email = req.params.email;
       const query = { uploaderEmail: email };
       const game = await gamesCollection.find(query).toArray();
@@ -122,16 +145,16 @@ async function run() {
     });
 
     // delete cart item
-    app.delete("/cart/:id", async (req, res) => {
+    app.delete("/cart/:id",  async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await cartCollection.deleteOne(query);
       res.send(result);
     });
     // read all cart page data
-    app.get("/cart/:email", async (req, res) => {
+    app.get("/cart/:email", logger, verifyToken, async (req, res) => {
       const email = req.params.email;
-      console.log('Token', req.cookies.token);
+      console.log('user in the valid token', req.user);
       const query = { userEmail: email };
       const cartFilter = await cartCollection.find(query).toArray();
       res.send(cartFilter);
