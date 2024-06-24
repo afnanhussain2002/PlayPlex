@@ -43,17 +43,19 @@ const router = createBrowserRouter([
                },
                {
                   path:'/update/:id',
-                  element:<UpdateProduct/>,
+                  element:<PrivateRoute><UpdateProduct/></PrivateRoute>,
                   loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`) 
                },
                {
                   path:'/cart/:email',
-                  element:<MyCart/>,
-                  loader:({params}) => fetch(`http://localhost:5000/cart/${params.email}`)
+                  element:<PrivateRoute><MyCart/></PrivateRoute>,
+                  loader:({params}) => fetch(`http://localhost:5000/cart/${params.email}`,{
+                     credentials:'include'
+                  })
                },
                {
                   path:'/games/profile/:email',
-                  element:<Profile/>,
+                  element:<PrivateRoute><Profile/></PrivateRoute>,
                   loader:({params}) => fetch (`http://localhost:5000/games/profile/${params.email}`)
                }
             ]

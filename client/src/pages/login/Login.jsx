@@ -3,14 +3,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Logo from "../../components/header/logo/Logo";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
-import {axios} from"axios"
+import axios from "axios";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const [logError, setLogError] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   // Login user
   const handleLogin = (e) => {
@@ -25,14 +25,19 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         // setSuccess("User Logged In Successfully");
-        // navigate(from, {replace: true})
-        const loggedUser = res.user
+        // navigate(from, { replace: true });
+        const loggedUser = res.user;
         console.log(loggedUser);
-        const user = {email}
-        axios.post('http://localhost:5000/jwt', user)
-        .then(res => {
+        const user = { email };
+        axios.post('http://localhost:5000/jwt', user, {withCredentials:true})
+        .then(res =>{
           console.log(res.data);
+          if (res.data.success) {
+            setSuccess("User Logged In Successfully");
+            navigate(from, { replace: true });
+          }
         })
+        
       })
       .catch((error) => {
         console.log(error);
@@ -52,7 +57,7 @@ const Login = () => {
                 <h3 className="mb-3 text-4xl font-extrabold text-white">
                   Log In
                 </h3>
-               <SocialLogin/>
+                <SocialLogin />
                 <div className="flex items-center mb-3">
                   <hr className="h-0 border-b border-solid border-grey-500 grow" />
                   <p className="mx-4 text-grey-600">or</p>

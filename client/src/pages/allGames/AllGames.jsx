@@ -2,9 +2,10 @@ import { useLoaderData } from "react-router-dom";
 import SingleGame from "./SingleGame";
 
 
+
 const AllGames = () => {
   const allGames = useLoaderData()
- 
+  
 
   return (
     <div>

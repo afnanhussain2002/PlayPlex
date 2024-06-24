@@ -1,11 +1,28 @@
 import { useLoaderData } from "react-router-dom";
 import MyCartData from "./MyCartData";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const MyCart = () => {
   const loadCartGames = useLoaderData();
+  // const {user, loading} = useContext(AuthContext)
   const [cartGames, setCartGames] = useState(loadCartGames)
+
+ /*  useEffect(()=>{
+    if (loading) {
+      return <span>Loading...</span>
+    }
+    axios.get(`http://localhost:5000/cart/${user.email}`)
+    .then(res =>{
+      setCartGames(res.data)
+    })
+  },[user, loading]) */
+
+ 
+
+  
 
   
   const handleDeleteProduct = _id =>{
