@@ -29,7 +29,7 @@ const router = createBrowserRouter([
                {
                   path:'/product/:id',
                   element:<PrivateRoute><ProductDetails/></PrivateRoute>,
-                  loader:({params}) => fetch(`https://playplex-server.vercel.app/games/${params.id}`)
+                  loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`)
 
                },
                {
@@ -39,22 +39,22 @@ const router = createBrowserRouter([
                {
                   path:'/allGames',
                   element:<AllGames/>,
-                  loader: () => fetch('https://playplex-server.vercel.app/games')
+                  loader: () => fetch('http://localhost:5000/games')
                },
                {
                   path:'/update/:id',
                   element:<UpdateProduct/>,
-                  loader:({params}) => fetch(`https://playplex-server.vercel.app/games/${params.id}`) 
+                  loader:({params}) => fetch(`http://localhost:5000/games/${params.id}`) 
                },
                {
                   path:'/cart/:email',
                   element:<MyCart/>,
-                  loader:({params}) => fetch(`https://playplex-server.vercel.app/cart/${params.email}`)
+                  loader:({params}) => fetch(`http://localhost:5000/cart/${params.email}`)
                },
                {
                   path:'/games/profile/:email',
                   element:<Profile/>,
-                  loader:({params}) => fetch (`https://playplex-server.vercel.app/games/profile/${params.email}`)
+                  loader:({params}) => fetch (`http://localhost:5000/games/profile/${params.email}`)
                }
             ]
          },

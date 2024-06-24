@@ -12,7 +12,7 @@ const ProductDetails = () => {
   const [cartProducts, setCartProducts] = useState([])
 
   useEffect(() =>{
-    fetch(`https://playplex-server.vercel.app/cart/${user.email}`)
+    fetch(`http://localhost:5000/cart/${user.email}`)
     .then(res => res.json())
     .then(data => setCartProducts(data))
   },[user])
@@ -31,7 +31,7 @@ const ProductDetails = () => {
       return;
     }
 
-      fetch('https://playplex-server.vercel.app/cart', {
+      fetch('http://localhost:5000/cart', {
         method:'POST',
         headers:{
           'content-type':'application/json'

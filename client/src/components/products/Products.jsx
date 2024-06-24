@@ -6,7 +6,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://playplex-server.vercel.app/games")
+    fetch("http://localhost:5000/games")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   });

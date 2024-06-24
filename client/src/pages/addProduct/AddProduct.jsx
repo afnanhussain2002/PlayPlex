@@ -32,7 +32,7 @@ const AddProduct = () => {
         }
         console.log(product);
 
-        fetch('https://playplex-server.vercel.app/games',{
+        fetch('http://localhost:5000/games',{
          method:'POST',
          headers:{
           'content-type':'application/json'

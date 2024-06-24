@@ -37,7 +37,7 @@ const UpdateProduct = () => {
           }
           console.log(updateProduct);
   
-          fetch(`https://playplex-server.vercel.app/games/${updateGame._id}`,{
+          fetch(`http://localhost:5000/games/${updateGame._id}`,{
            method:'PUT',
            headers:{
             'content-type':'application/json'
