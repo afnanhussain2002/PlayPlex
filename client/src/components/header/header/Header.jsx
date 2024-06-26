@@ -67,7 +67,9 @@ const Header = () => {
       </li>
     </>
   );
-  const currentUser = user.email
+ 
+    const currentUser = user?.email
+  
   // handle logout
   const handleLogout = () => {
     logout()
