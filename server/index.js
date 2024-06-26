@@ -41,7 +41,6 @@ const verifyToken = async(req,res,next) =>{
   }
   jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(error, decoded) =>{
     if (error) {
-      console.log(error);
       return res.status(401).send({message:'Unauthorized'})
     }
     console.log('Value in the token', decoded);
@@ -69,6 +68,12 @@ async function run() {
         secure:false
       })
       .send({success:true})
+    })
+
+    // remove token after logout
+    app.post('/logout', async(req,res) =>{
+      const user =req.body;
+      res.clearCookie('token',{maxAge:0}).send({success:true})
     })
 
     // service related api
@@ -155,7 +160,6 @@ async function run() {
     app.get("/cart/:email", logger, verifyToken, async (req, res) => {
       const email = req.params.email;
       console.log('user in the valid token', req.user);
-      console.log('query email:', req.params.email, 'User Email:', req.user.email);
       if (req.params.email !== req.user.email) {
         return res.status(403).send({message:'forbidden access'})
       }

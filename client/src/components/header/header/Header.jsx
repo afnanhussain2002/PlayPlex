@@ -5,6 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from 'sweetalert2'
+import axios from "axios";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -66,17 +67,25 @@ const Header = () => {
       </li>
     </>
   );
+  const currentUser = user.email
   // handle logout
   const handleLogout = () => {
     logout()
       .then(() => {
-        Swal.fire({
+        axios.post('http://localhost:5000/logout', currentUser,{withCredentials:true} )
+        .then(res =>{
+          console.log(res.data);
+          if (res.data.success) {
+             Swal.fire({
           position: "top-end",
           icon: "success",
           title: "Log out Successfully",
           showConfirmButton: false,
           timer: 1500
         });
+          }
+        })
+       
       })
       .catch();
   };

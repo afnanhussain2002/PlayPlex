@@ -7,7 +7,7 @@ import { useState } from "react";
 const MyCart = () => {
   const loadCartGames = useLoaderData();
   // const {user, loading} = useContext(AuthContext)
-  const [cartGames, setCartGames] = useState(loadCartGames)
+  const [cartGames, setCartGames] = useState(loadCartGames) || []
 
   const handleDeleteProduct = _id =>{
 
@@ -26,7 +26,7 @@ const MyCart = () => {
           timer: 1500,
         });
       }
-     const remainingGames = cartGames.filter(game => game._id !== _id)
+     const remainingGames = cartGames?.filter(game => game._id !== _id)
      setCartGames(remainingGames)
   })
 }
